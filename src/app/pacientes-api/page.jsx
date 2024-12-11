@@ -1,7 +1,7 @@
 import Link from "next/link";
 import Fallback from "@/components/fallback";
-import pacientes from "@/components/api-pacientes";
-import pacienteNuevo from "@/components/api-paciente-nuevo";
+import Pacientes from "@/components/api-pacientes";
+import PacienteNuevo from "@/components/api-paciente-nuevo";
 import { Suspense } from "react";
 
 
@@ -21,11 +21,11 @@ async function pacientesPage({ searchParams }) {
             </h1>
 
             <Suspense fallback={<Fallback>Nuevo paciente ... </Fallback>}>
-                <pacienteNuevo />
+                <PacienteNuevo />
             </Suspense>
 
             <Suspense fallback={<Fallback>Obteniendo datos ... </Fallback>}>
-                <pacientes query={query || ''} />
+                <Pacientes query={query || ''} />
             </Suspense>
         </section>
     );

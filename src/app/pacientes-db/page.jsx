@@ -1,5 +1,5 @@
-import paciente from "@/components/db-pacientes";
-import pacienteNuevo from "@/components/db-paciente-nuevo";
+import Paciente from "@/components/db-pacientes";
+import PacienteNuevo from "@/components/db-paciente-nuevo";
 import { Suspense } from "react";
 import Link from "next/link";
 import Fallback from "@/components/fallback";
@@ -22,11 +22,11 @@ async function pacientesPage({ searchParams }) {
             </h1>
           
             <Suspense fallback={ <Fallback>Nuevo paciente ... </Fallback> }>
-                <pacienteNuevo  />
+                <PacienteNuevo  />
             </Suspense>
 
             <Suspense fallback={ <Fallback>Obteniendo paciente ... </Fallback> }>
-                <paciente query={query || ''} />
+                <Paciente query={query || ''} />
             </Suspense>
         </section>
     );
