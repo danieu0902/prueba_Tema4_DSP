@@ -2,22 +2,22 @@ import Link from "next/link";
 import { notFound } from 'next/navigation'
 
 
-async function obtenerMedico(id) {
+async function ObtenerMedico(id) {
     const response = await fetch('http://localhost:4000/medicos/' + id)
     if (!response.ok) notFound()
-    const medico = await response.json()  
+    const Medico = await response.json()  
 
     // Introducimos un retardo artificial
     // await new Promise(resolve => setTimeout(resolve, 2000))
 
-    return medico
+    return Medico
 }
 
 
 async function MedicoPage({ params }) {
 
     const { id } = await params
-    const medico = await obtenerMedico(id)
+    const medico = await ObtenerMedico(id)
 
     return (
         <section className="min-h-screen max-w-[1024px] mx-auto px-10 py-10">

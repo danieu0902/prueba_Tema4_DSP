@@ -1,5 +1,5 @@
 import medicos from "@/components/db-medicos";
-import medicoNuevo from "@/components/db-medico-nuevo";
+import MedicoNuevo from "@/components/db-medico-nuevo";
 import { Suspense } from "react";
 import Link from "next/link";
 import Fallback from "@/components/fallback";
@@ -22,7 +22,7 @@ async function medicosPage({ searchParams }) {
             </h1>
           
             <Suspense fallback={ <Fallback>Nuevo medico ... </Fallback> }>
-                <medicoNuevo  />
+                <MedicoNuevo  />
             </Suspense>
 
             <Suspense fallback={ <Fallback>Obteniendo medicos ... </Fallback> }>

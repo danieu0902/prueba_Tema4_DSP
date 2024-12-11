@@ -16,7 +16,7 @@ async function nuevoPaciente(formData) {
 
 
 
-function PacientNew() {
+function PacienteNew() {
     return (
         <form className='my-10 grid grid-cols-[150px_auto] gap-4'>
 
@@ -41,4 +41,4 @@ function PacientNew() {
     );
 }
 
-export default PacientNew;
+export default PacienteNew;

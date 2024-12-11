@@ -42,7 +42,7 @@ async function Medicos({ query }) {
                             <div className='flex gap-6'>
                                 <form>
                                     <input type="hidden" name='id' value={medico.id} />
-                                    <button formAction={eliminarmedico} title='ELIMINAR'>❌</button>
+                                    <button formAction={eliminarMedico} title='ELIMINAR'>❌</button>
                                 </form>
                             </div>
                         </div>

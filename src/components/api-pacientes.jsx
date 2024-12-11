@@ -23,7 +23,7 @@ async function eliminarPaciente(formData) {
 }
 
 
-async function pacientes({ query }) {
+async function Pacientes({ query }) {
     const pacientes = await obtenerPacientes(query)
 
     return (
@@ -42,7 +42,7 @@ async function pacientes({ query }) {
                             <div className='flex gap-6'>
                                 <form>
                                     <input type="hidden" name='id' value={paciente.id} />
-                                    <button formAction={eliminarCliente} title='ELIMINAR'>❌</button>
+                                    <button formAction={eliminarPaciente} title='ELIMINAR'>❌</button>
                                 </form>
                             </div>
                         </div>
@@ -53,7 +53,7 @@ async function pacientes({ query }) {
     )
 }
 
-export default pacientes
+export default Pacientes
 
 
 

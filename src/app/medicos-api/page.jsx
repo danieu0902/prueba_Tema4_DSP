@@ -1,12 +1,12 @@
 import Link from "next/link";
 import Fallback from "@/components/fallback";
-import medicos from "@/components/api-medicos";
-import medicoNuevo from "@/components/api-medico-nuevo";
+import Medicos from "@/components/api-medicos";
+import MedicoNuevo from "@/components/api-medico-nuevo";
 import { Suspense } from "react";
 
 
 
-async function medicosPage({ searchParams }) {
+async function MedicosPage({ searchParams }) {
     const { query } = await searchParams;
 
     // Introducimos un retardo artificial
@@ -21,14 +21,14 @@ async function medicosPage({ searchParams }) {
             </h1>
 
             <Suspense fallback={<Fallback>Nuevo medico ... </Fallback>}>
-                <medicoNuevo />
+                <MedicoNuevo />
             </Suspense>
 
             <Suspense fallback={<Fallback>Obteniendo datos ... </Fallback>}>
-                <medicos query={query || ''} />
+                <Medicos query={query || ''} />
             </Suspense>
         </section>
     );
 }
 
-export default medicosPage;
+export default MedicosPage;
