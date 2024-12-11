@@ -11,7 +11,7 @@ async function nuevoMedico(formData) {
     })
     const data = await response.json()
 
-    revalidatePath('/medicos')
+    revalidatePath('/medic')
 }
 
 
