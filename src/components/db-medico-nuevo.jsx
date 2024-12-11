@@ -2,37 +2,37 @@ import mysql from "@/lib/mysql"
 import { revalidatePath } from "next/cache"
 
 
-async function nuevoProducto(formData) {
+async function nuevoMedico(formData) {
     'use server'
     const nombre = formData.get('nombre')
-    const descripcion = formData.get('descripcion')
-    const precio = formData.get('precio')
+    const especialidad = formData.get('especialidad')
+    const perfil = formData.get('perfil')
 
-    const sql = 'insert into `productos` (`nombre`, `descripcion`, `precio`) values (?, ?, ?)'
-    const values = [nombre, descripcion, precio];
+    const sql = 'insert into `medicos` (`nombre`, `especialidad`, `perfil`) values (?, ?, ?)'
+    const values = [nombre, especialidad, perfil];
 
     const [result, fields] = await mysql.query(sql, values)
-    revalidatePath('/productos')
+    revalidatePath('/medicos')
 }
 
 
 
-function ProductoNuevo() {
+function MedicoNuevo() {
     return (
         <form className='my-10 grid grid-cols-[150px_auto] gap-4'>
 
             <label htmlFor='nombre'>Nombre</label>
             <input required id='nombre' name='nombre' className='p-1 border border-slate-200 focus:outline-blue-300 text-lg' />
 
-            <label htmlFor='descripcion'>Descripción:</label>
-            <input required id='descripcion' name='descripcion' className='p-1 border border-slate-200 focus:outline-blue-300 text-lg' />
+            <label htmlFor='especialidad'>Especialidad: </label>
+            <input required id='especialidad' name='especialidad' className='p-1 border border-slate-200 focus:outline-blue-300 text-lg' />
 
-            <label htmlFor='precio'>Precio</label>
-            <input required id='precio' name='precio' type='number' step='0.01' className='p-1 border border-slate-200 focus:outline-blue-300 text-lg' />
+            <label htmlFor='perfil'>perfil: </label>
+            <input required id='perfil' name='perfil' type='enum' values="RESIDENTE, ESPECIALISTA"   className='p-1 border border-slate-200 focus:outline-blue-300 text-lg' />
 
             <div className='col-span-2 grid gap-2'>
-                <button formAction={nuevoProducto} className='bg-green-600 text-white px-4 py-2 rounded-xl'>
-                    Guardar producto
+                <button formAction={nuevoMedico} className='bg-green-600 text-white px-4 py-2 rounded-xl'>
+                    Guardar Medico
                 </button>
                 <button type='reset' className='bg-slate-600 text-white px-4 py-2 rounded-xl'>
                     Limpiar campos
@@ -42,4 +42,4 @@ function ProductoNuevo() {
     );
 }
 
-export default ProductoNuevo;
+export default MedicoNuevo;
