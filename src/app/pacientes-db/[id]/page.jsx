@@ -3,8 +3,8 @@ import { notFound } from 'next/navigation'
 import mysql from '@/lib/mysql'
 
 
-async function obtenerCliente(id) {
-    const sql = 'select * from clientes where id = ?';
+async function obtenerPaciente(id) {
+    const sql = 'select * from pacientes where id = ?';
     const values = [id]
     const [rows] = await mysql.query(sql, values);
 
@@ -15,25 +15,25 @@ async function obtenerCliente(id) {
 }
 
 
-async function clientePage({ params }) {
+async function pacientePage({ params }) {
     const { id } = await params
-    const cliente = await obtenerCliente(id)
+    const paciente = await obtenerPaciente(id)
 
-    if (!cliente) notFound()
+    if (!paciente) notFound()
 
     return (
         <section className="min-h-screen max-w-[1024px] mx-auto px-10 py-10">
-            <Link href="/clientes-db" className="fixed p-2 bg-orange-300 rounded-full"> &lt;- Volver </Link>
+            <Link href="/pacientes-db" className="fixed p-2 bg-orange-300 rounded-full"> &lt;- Volver </Link>
             <h1 className='py-10 text-3xl text-blue-500 text-center border-b-4 border-b-blue-500'>
-                cliente #{cliente.id}
+                paciente #{paciente.id}
             </h1>
             <div className="flex flex-col gap-10 items-center mt-20 p-10 bg-blue-100 rounded-xl">
-                <p className="text-6xl place-self-center">{cliente.nombre}</p>
-                <p className="text-2xl place-self-center text-slate-400">{cliente.domicilio}</p>
-                <p className="text-7xl place-self-center text-blue-400 *:font-bold">{cliente.fecha_nacimiento.toLocaleDateString()} </p>
+                <p className="text-6xl place-self-center">{paciente.nombre}</p>
+                <p className="text-2xl place-self-center text-slate-400">{paciente.localidad}</p>
+                <p className="text-7xl place-self-center text-blue-400 *:font-bold">{paciente.fecha_nacimiento.toLocaleDateString()} </p>
             </div>
         </section>
     );
 }
 
-export default clientePage;
+export default pacientePage;
