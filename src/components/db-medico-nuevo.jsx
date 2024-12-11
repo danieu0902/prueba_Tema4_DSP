@@ -2,7 +2,7 @@ import mysql from "@/lib/mysql"
 import { revalidatePath } from "next/cache"
 
 
-async function nuevoMedico(formData) {
+async function NuevoMedico(formData) {
     'use server'
     const nombre = formData.get('nombre')
     const especialidad = formData.get('especialidad')
@@ -31,7 +31,7 @@ function MedicoNuevo() {
             <input required id='perfil' name='perfil' type='enum' values="RESIDENTE, ESPECIALISTA"   className='p-1 border border-slate-200 focus:outline-blue-300 text-lg' />
 
             <div className='col-span-2 grid gap-2'>
-                <button formAction={nuevoMedico} className='bg-green-600 text-white px-4 py-2 rounded-xl'>
+                <button formAction={NuevoMedico} className='bg-green-600 text-white px-4 py-2 rounded-xl'>
                     Guardar Medico
                 </button>
                 <button type='reset' className='bg-slate-600 text-white px-4 py-2 rounded-xl'>

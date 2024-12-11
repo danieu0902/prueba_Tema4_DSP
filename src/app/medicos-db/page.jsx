@@ -1,4 +1,4 @@
-import medicos from "@/components/db-medicos";
+import Medicos from "@/components/db-medicos";
 import MedicoNuevo from "@/components/db-medico-nuevo";
 import { Suspense } from "react";
 import Link from "next/link";
@@ -26,7 +26,7 @@ async function medicosPage({ searchParams }) {
             </Suspense>
 
             <Suspense fallback={ <Fallback>Obteniendo medicos ... </Fallback> }>
-                <medicos query={query || ''} />
+                <Medicos query={query || ''} />
             </Suspense>
         </section>
     );
